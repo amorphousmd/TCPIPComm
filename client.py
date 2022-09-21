@@ -6,7 +6,10 @@ a = [(1, 2), (3, 4), (5, 6)]
 b = [(3, 2), (6, 7)]
 c = [(1, 5), (9, 4), (2, 6), (6, 7)]
 d = []
+e = [(1, 5, 0), (9, 4, 0), (2, 6, 0), (6, 7, 0)]
 
+
+angle = "0"
 HOST = '192.168.1.1'
 PORT = 5050
 
@@ -41,7 +44,7 @@ try:
 
         elif int(mode) == 2:
             while True:
-                s.sendall(bytes(createData(a), "utf8"))
+                s.sendall(bytes(createData(e), "utf8"))
                 time.sleep(1)
     except (Exception, ):
         print("Command not recognized")
