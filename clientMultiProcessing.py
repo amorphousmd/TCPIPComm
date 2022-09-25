@@ -20,8 +20,19 @@ def startClient():
     except ConnectionRefusedError:
         print("No server found")
     else:
+        global connected
+        connected = True
         while True:
-            pass
+            global sendDataOrder
+            global closeClientOrder
+            if sendDataOrder:
+                global dataBuffer
+                clientSocket.sendall(bytes(dataBuffer, "utf8"))
+                dataBuffer = ''
+                sendDataOrder = False
+            if closeClientOrder:
+                closeClientOrder = False
+                clientSocket.close()
 
 
 def createData(coords_list):
